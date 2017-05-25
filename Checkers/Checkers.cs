@@ -19,16 +19,28 @@ namespace Checkers
     {
         public static void DrawBoard(int SizeofSquares,int Dimensions = 8)
         {
-            int CellCount = 1;
             for (int x = SizeofSquares; x <= SizeofSquares*Dimensions; x += SizeofSquares)
             {
                 for (int y = SizeofSquares; y <= SizeofSquares * Dimensions; y += SizeofSquares)
                 {
-                    CellCount++;
+                    int Modulo = (x/SizeofSquares+y/SizeofSquares) % 2;
                     GraphicsWindow.DrawRectangle(x, y, SizeofSquares, SizeofSquares);
-                    Console.WriteLine("({0},{1}) : {2}", x/SizeofSquares, y/SizeofSquares, CellCount % 2);
+
+                    if (Modulo == 1)
+                    {
+                        GraphicsWindow.BrushColor = LDColours.Black;
+                        GraphicsWindow.FillRectangle(x, y, SizeofSquares, SizeofSquares);
+                        GraphicsWindow.DrawText(x + .25 * SizeofSquares, y + .5 * SizeofSquares, "(" + x / SizeofSquares + "," + y / SizeofSquares + ") : " + Modulo);
+                        GraphicsWindow.BrushColor = "White";
+                    }
+                    else
+                    {
+                        GraphicsWindow.BrushColor = "Black";
+                    }
+                    GraphicsWindow.DrawText(x + .25 * SizeofSquares, y + .5 * SizeofSquares, "(" + x / SizeofSquares + "," + y / SizeofSquares + ")");
                 }
             }
+            GraphicsWindow.DrawRectangle(SizeofSquares, SizeofSquares, SizeofSquares * Dimensions, SizeofSquares * Dimensions);
         }
     }
 }
