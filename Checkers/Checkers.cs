@@ -37,7 +37,8 @@ namespace Checkers
                     {
                         GraphicsWindow.BrushColor = "Black";
                     }
-                    GraphicsWindow.DrawText(x + .25 * SizeofSquares, y + .5 * SizeofSquares, "(" + x / SizeofSquares + "," + y / SizeofSquares + ")");
+                    string Message = "(" + x / SizeofSquares + "," + y / SizeofSquares + ")";
+                    GraphicsWindow.DrawText( (x + .5 * SizeofSquares) , y + .5 * SizeofSquares, Message);
                 }
             }
             GraphicsWindow.DrawRectangle(SizeofSquares, SizeofSquares, SizeofSquares * Dimensions, SizeofSquares * Dimensions);
